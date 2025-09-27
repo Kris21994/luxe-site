@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shear Genius | Premium Hair & Beauty Salon</title>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.waves.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'salon-pink': '#f8b4d9',
+                        'salon-purple': '#a78bfa',
+                        'salon-gold': '#fbbf24'
+                    },
+                    fontFamily: {
+                        'cursive': ['"Dancing Script"', 'cursive'],
+                        'sans': ['"Poppins"', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .hero-bg {
+            background: linear-gradient(135deg, #f8b4d9 0%, #a78bfa 50%, #fbbf24 100%);
+        }
+        .service-card:hover {
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+        }
+        .stylist-card {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body class="font-sans">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <i data-feather="scissors" class="text-salon-pink w-8 h-8 mr-2"></i>
+                    <span class="text-2xl font-cursive font-bold text-gray-800">Shear Genius</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-gray-600 hover:text-salon-pink transition">Home</a>
+                    <a href="#services" class="text-gray-600 hover:text-salon-pink transition">Services</a>
+                    <a href="#stylists" class="text-gray-600 hover:text-salon-pink transition">Stylists</a>
+                    <a href="#booking" class="text-gray-600 hover:text-salon-pink transition">Book Now</a>
+                    <a href="#contact" class="text-gray-600 hover:text-salon-pink transition">Contact</a>
+                </div>
+                <button class="md:hidden">
+                    <i data-feather="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-bg min-h-screen flex items-center relative overflow-hidden">
+        <div id="vanta-bg" class="absolute inset-0"></div>
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h1 class="text-5xl md:text-7xl font-cursive font-bold text-white mb-6">Your Style, Our Passion</h1>
+                    <p class="text-xl text-white/90 mb-8">Experience luxury hair and beauty services tailored just for you. Book your transformation today!</p>
+                    <div class="flex space-x-4">
+                        <a href="#booking" class="bg-white text-salon-pink px-8 py-3 rounded-full font-semibold hover:shadow-lg transition">Book Appointment</a>
+                        <a href="#services" class="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-salon-pink transition">View Services</a>
+                    </div>
+                </div>
+                <div class="relative">
+                    <img src="http://static.photos/beauty/640x360/1" alt="Salon Interior" class="rounded-2xl shadow-2xl">
+                    <div class="absolute -bottom-6 -left-6 bg-salon-gold text-white p-4 rounded-2xl shadow-lg">
+                        <div class="text-2xl font-bold">4.9/5</div>
+                        <div class="text-sm">Customer Rating</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-cursive text-gray-800 mb-4">Our Magical Services</h2>
+                <p class="text-gray-600 text-lg">From cutting-edge styles to relaxing treatments</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="service-card bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl">
+                    <i data-feather="scissors" class="w-12 h-12 text-salon-pink mb-4"></i>
+                    <h3 class="text-2xl font-semibold mb-4">Hair Styling</h3>
+                    <p class="text-gray-600 mb-6">Professional cuts, coloring, and styling that brings out your unique beauty.</p>
+                    <div class="text-salon-gold text-lg font-semibold">From $75</div>
+                </div>
+                <div class="service-card bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl">
+                    <i data-feather="sparkles" class="w-12 h-12 text-salon-purple mb-4"></i>
+                    <h3 class="text-2xl font-semibold mb-4">Beauty Treatments</h3>
+                    <p class="text-gray-600 mb-6">Luxurious facials, makeup, and skincare services for that radiant glow.</p>
+                    <div class="text-salon-gold text-lg font-semibold">From $60</div>
+                </div>
+                <div class="service-card bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl">
+                    <i data-feather="heart" class="w-12 h-12 text-salon-pink mb-4"></i>
+                    <h3 class="text-2xl font-semibold mb-4">Spa Services</h3>
+                    <p class="text-gray-600 mb-6">Relaxing massages and wellness treatments to rejuvenate your spirit.</p>
+                    <div class="text-salon-gold text-lg font-semibold">From $90</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stylists Section -->
+    <section id="stylists" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-cursive text-gray-800 mb-4">Meet Our Artists</h2>
+                <p class="text-gray-600 text-lg">Certified professionals with years of experience</p>
+            </div>
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="stylist-card rounded-2xl p-6 text-center">
+                    <img src="http://static.photos/people/320x240/1" alt="Emma Wilson" class="w-32 h-32 rounded-full mx-auto mb-4">
+                    <h3 class="text-xl font-semibold">Emma Wilson</h3>
+                    <p class="text-salon-pink mb-2">Master Stylist</p>
+                    <p class="text-gray-600 text-sm">Specializes in color correction and modern cuts</p>
+                </div>
+                <div class="stylist-card rounded-2xl p-6 text-center">
+                    <img src="http://static.photos/people/320x240/2" alt="Sarah Chen" class="w-32 h-32 rounded-full mx-auto mb-4">
+                    <h3 class="text-xl font-semibold">Sarah Chen</h3>
+                    <p class="text-salon-purple mb-2">Beauty Expert</p>
+                    <p class="text-gray-600 text-sm">Makeup artist and skincare specialist</p>
+                </div>
+                <div class="stylist-card rounded-2xl p-6 text-center">
+                    <img src="http://static.photos/people/320x240/3" alt="Marcus Rodriguez" class="w-32 h-32 rounded-full mx-auto mb-4">
+                    <h3 class="text-xl font-semibold">Marcus Rodriguez</h3>
+                    <p class="text-salon-gold mb-2">Barber</p>
+                    <p class="text-gray-600 text-sm">Classic and contemporary barbering</p>
+                </div>
+                <div class="stylist-card rounded-2xl p-6 text-center">
+                    <img src="http://static.photos/people/320x240/4" alt="Lisa Park" class="w-32 h-32 rounded-full mx-auto mb-4">
+                    <h3 class="text-xl font-semibold">Lisa Park</h3>
+                    <p class="text-salon-pink mb-2">Spa Therapist</p>
+                    <p class="text-gray-600 text-sm">Wellness and relaxation treatments</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section id="booking" class="py-20 bg-gray-900 text-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl md:text-5xl font-cursive mb-4">Book Your Transformation</h2>
+                <p class="text-gray-300">Ready for your makeover? Schedule your appointment in just a few clicks</p>
+            </div>
+            <div class="bg-gray-800 rounded-2xl p-8">
+                <form class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Service Type</label>
+                        <select class="w-full bg-gray-700 rounded-lg px-4 py-3 text-white">
+                            <option>Hair Cut & Styling</option>
+                            <option>Color Services</option>
+                            <option>Beauty Treatment</option>
+                            <option>Spa Service</option>
+                            <option>Package Deal</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Preferred Stylist</label>
+                        <select class="w-full bg-gray-700 rounded-lg px-4 py-3 text-white">
+                            <option>Any Available</option>
+                            <option>Emma Wilson</option>
+                            <option>Sarah Chen</option>
+                            <option>Marcus Rodriguez</option>
+                            <option>Lisa Park</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Date</label>
+                        <input type="date" class="w-full bg-gray-700 rounded-lg px-4 py-3 text-white">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Time</label>
+                        <input type="time" class="w-full bg-gray-700 rounded-lg px-4 py-3 text-white">
+                    </div>
+                    <div class="md:col-span-2">
+                        <label class="block text-sm font-medium mb-2">Special Requests</label>
+                        <textarea class="w-full bg-gray-700 rounded-lg px-4 py-3 text-white h-24" placeholder="Any special requirements or notes..."></textarea>
+                    </div>
+                    <div class="md:col-span-2 text-center">
+                        <button type="submit" class="bg-salon-pink text-white px-12 py-4 rounded-full font-semibold hover:bg-pink-400 transition">Confirm Booking</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="bg-gray-800 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <i data-feather="scissors" class="text-salon-pink w-6 h-6 mr-2"></i>
+                        <span class="text-xl font-cursive font-bold">Shear Genius</span>
+                    </div>
+                    <p class="text-gray-400">Transforming beauty one client at a time with passion and precision.</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Contact Info</h3>
+                    <div class="space-y-2 text-gray-400">
+                        <div class="flex items-center">
+                            <i data-feather="map-pin" class="w-4 h-4 mr-2"></i>
+                            <span>123 Beauty Street, Style City</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i data-feather="phone" class="w-4 h-4 mr-2"></i>
+                            <span>(555) 123-4567</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i data-feather="mail" class="w-4 h-4 mr-2"></i>
+                            <span>hello@sheargenius.com</span>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Hours</h3>
+                    <div class="space-y-2 text-gray-400">
+                        <div>Mon-Fri: 9AM-8PM</div>
+                        <div>Saturday: 10AM-6PM</div>
+                        <div>Sunday: 11AM-5PM</div>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Follow Us</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-salon-pink transition"><i data-feather="instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-salon-pink transition"><i data-feather="facebook"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-salon-pink transition"><i data-feather="twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 Shear Genius Salon. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Vanta.js background
+        VANTA.WAVES({
+            el: "#vanta-bg",
+            mouseControls: true,
+            touchControls: true,
+            gyroControls: false,
+            minHeight: 200.00,
+            minWidth: 200.00,
+            scale: 1.00,
+            scaleMobile: 1.00,
+            color: 0xf8b4d9,
+            shininess: 35.00,
+            waveHeight: 15.00,
+            waveSpeed: 0.70,
+            zoom: 0.85
+        });
+
+        // Initialize Feather Icons
+        feather.replace();
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>

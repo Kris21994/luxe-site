@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinTrack Pro - Portfolio</title>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <style>
+        :root {
+            --primary-500: #3b82f6;
+            --primary-700: #1d4ed8;
+            --secondary-500: #10b981;
+            --secondary-300: #6ee7b7;
+        }
+        .bg-primary { background-color: var(--primary-500); }
+        .text-primary { color: var(--primary-500); }
+        .border-primary { border-color: var(--primary-500); }
+        .bg-secondary { background-color: var(--secondary-500); }
+        .text-secondary { color: var(--secondary-500); }
+        .dark-mode {
+            --primary-500: #60a5fa;
+            --primary-700: #3b82f6;
+            --secondary-500: #34d399;
+            --secondary-300: #6ee7b7;
+        }
+        .investment-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .investment-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .positive {
+            color: #10b981;
+        }
+        .negative {
+            color: #ef4444;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+    <!-- Navigation -->
+    <nav class="bg-white dark:bg-gray-800 shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <i data-feather="trending-up" class="h-8 w-8 text-primary"></i>
+                        <span class="ml-2 text-xl font-bold">FinTrack Pro</span>
+                    </div>
+                    <div class="hidden md:ml-10 md:flex md:space-x-8">
+                        <a href="index.html" class="text-gray-500 dark:text-gray-300 hover:border-gray-300 hover:text-gray-700 dark:hover:text-gray-200 inline-flex items-center px-1 pt-1 text-sm font-medium">Dashboard</a>
+                        <a href="reports.html" class="text-gray-500 dark:text-gray-300 hover:border-gray-300 hover:text-gray-700 dark:hover:text-gray-200 inline-flex items-center px-1 pt-1 text-sm font-medium">Reports</a>
+                        <a href="portfolio.html" class="border-b-2 border-primary text-gray-900 dark:text-white inline-flex items-center px-1 pt-1 text-sm font-medium">Portfolio</a>
+                        <a href="contact.html" class="text-gray-500 dark:text-gray-300 hover:border-gray-300 hover:text-gray-700 dark:hover:text-gray-200 inline-flex items-center px-1 pt-1 text-sm font-medium">Contact</a>
+                    </div>
+                </div>
+                <div class="flex items-center">
+                    <button id="theme-toggle" class="p-2 rounded-full text-gray-500 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
+                        <i data-feather="moon" class="h-5 w-5"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="md:flex md:items-center md:justify-between">
+            <div class="flex-1 min-w-0">
+                <h2 class="text-2xl font-bold leading-7 text-gray-900 dark:text-white sm:text-3xl sm:truncate">
+                    Investment Portfolio
+                </h2>
+                <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+                    Track and analyze your investments performance
+                </p>
+            </div>
+            <div class="mt-4 flex md:mt-0 md:ml-4">
+                <button type="button" class="ml-3 inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primary hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
+                    <i data-feather="plus" class="mr-2 h-4 w-4"></i>
+                    Add Investment
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Investments Section -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Stock Investment -->
+            <div class="bg-white dark:bg-gray-800 shadow rounded-lg p-6 investment-card">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <h3 class="text-lg font-medium text-gray-900 dark:text-white">Apple Inc. (AAPL)</h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">Technology</p>
+                    </div>
+                    <div class="bg-blue-100 dark:bg-blue-900 rounded-full p-3">
+                        <i data-feather="activity" class="h-6 w-6 text-blue-600"></i>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <p class="text-2xl font-bold text-gray-900 dark:text-white">$15,240.75</p>
+                    <div class="flex items-center mt-1">
+                        <span class="text-sm font-medium positive">+2.3%</span>
+                        <span class="text-sm text-gray-500 dark:text-gray-400 ml-2">Today</span>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <canvas id="stockChart" height="50"></canvas>
+                </div>
+            </div>
+            
+            <!-- Crypto Investment -->
+            <div class="bg-white dark:bg-gray-800 shadow rounded-lg p-6 investment-card">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <h3 class="text-lg font-medium text-gray-900 dark:text-white">Bitcoin (BTC)</h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">Cryptocurrency</p>
+                    </div>
+                    <div class="bg-yellow-100 dark:bg-yellow-900 rounded-full p-3">
+                        <i data-feather="zap" class="h-6 w-6 text-yellow-600"></i>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <p class="text-2xl font-bold text-gray-900 dark:text-white">$28,750.20</p>
+                    <div class="flex items-center mt-1">
+                        <span class="text-sm font-medium negative">-1.7%</span>
+                        <span class="text-sm text-gray-500 dark:text-gray-400 ml-2">Today</span>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <canvas id="cryptoChart" height="50"></canvas>
+                </div>
+            </div>
+            
+            <!-- Mutual Fund Investment -->
+            <div class="bg-white dark:bg-gray-800 shadow rounded-lg p-6 investment-card">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <h3 class="text-lg font-medium text-gray-900 dark:text-white">Vanguard 500 Index</h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">Mutual Fund</p>
+                    </div>
+                    <div class="bg-green-100 dark:bg-green-900 rounded-full p-3">
+                        <i data-feather="trending-up" class="h-6 w-6 text-green-600"></i>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <p class="text-2xl font-bold text-gray-900 dark:text-white">$12,430.50</p>
+                    <div class="flex items-center mt-1">
+                        <span class="text-sm font-medium positive">+0.8%</span>
+                        <span class="text-sm text-gray-500 dark:text-gray-400 ml-2">Today</span>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <canvas id="fundChart" height="50"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Investment Calculator -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+        <div class="bg-white dark:bg-gray-800 shadow rounded-lg p-6">
+            <h3 class="text-lg font-medium text-gray-900 dark:text-white mb-4">Investment Growth Calculator</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <div class="space-y-6">
+                        <div>
+                            <label for="initial-investment" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Initial Investment ($)</label>
+                            <input type="number" id="initial-investment" value="10000" class="mt-1 block w-full border border-gray-300 dark:border-gray-600 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-primary focus:border-primary dark:bg-gray-700 dark:text-white">
+                        </div>
+                        
+                        <div>
+                            <label for="annual-return" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Expected Annual Return (%)</label>
+                            <input type="number" id="annual-return" value="7" step="0.1" class="mt-1 block w-full border border-gray-300 dark:border-gray-600 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-primary focus:border-primary dark:bg-gray-700 dark:text-white">
+                        </div>
+                        
+                        <div>
+                            <label for="time-period" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Time Period (Years)</label>
+                            <input type="range" id="time-period" min="1" max="30" value="10" class="mt-1 block w-full">
+                            <div class="flex justify-between text-sm text-gray-500 dark:text-gray-400 mt-1">
+                                <span>1</span>
+                                <span id="time-period-value">10</span>
+                                <span>30</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-6">
+                        <h4 class="text-lg font-medium text-gray-900 dark:text-white mb-4">Projected Growth</h4>
+                        <div class="space-y-4">
+                            <div class="flex justify-between">
+                                <span class="text-gray-600 dark:text-gray-300">Initial Investment:</span>
+                                <span class="font-medium" id="initial-amount">$10,000.00</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600 dark:text-gray-300">Total Contributions:</span>
+                                <span class="font-medium" id="contributions-amount">$0.00</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600 dark:text-gray-300">Interest Earned:</span>
+                                <span class="font-medium" id="interest-amount">$9,671.51</span>
+                            </div>
+                            <div class="border-t border-gray-200 dark:border-gray-600 pt-4 flex justify-between">
+                                <span class="text-lg font-medium text-gray-900 dark:text-white">Future Value:</span>
+                                <span class="text-lg font-bold text-primary" id="future-value">$19,671.51</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-6">
+                        <canvas id="growthChart" height="200"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white dark:bg-gray-800">
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+            <div class="border-t border-gray-200 dark:border-gray-700 pt-8">
+                <p class="text-base text-gray-400 dark:text-gray-500 text-center">
+                    &copy; 2023 FinTrack Pro. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Feather Icons
+        feather.replace();
+        
+        // Theme toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = themeToggle.querySelector('i');
+        
+        themeToggle.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+            if (document.documentElement.classList.contains('dark')) {
+                themeIcon.setAttribute('data-feather', 'sun');
+            } else {
+                themeIcon.setAttribute('data-feather', 'moon');
+            }
+            feather.replace();
+        });
+        
+        // Initialize Sparkline Charts
+        function createSparkline(canvasId, data, color) {
+            const ctx = document.getElementById(canvasId).getContext('2d');
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['', '', '', '', '', ''],
+                    datasets: [{
+                        data: data,
+                        borderColor: color,
+                        backgroundColor: 'rgba(0,0,0,0)',
+                        borderWidth: 2,
+                        pointRadius: 0,
+                        tension: 0.4,
+                        fill: false
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            enabled: false
+                        }
+                    },
+                    scales: {
+                        x: {
+                            display: false
+                        },
+                        y: {
+                            display: false
+                        }
+                    }
+                }
+            });
+        }
+        
+        // Create sparkline charts
+        createSparkline('stockChart', [145, 150, 148, 152, 155, 152], '#3b82f6');
+        createSparkline('cryptoChart', [290, 285, 288, 282, 280, 285], '#f59e0b');
+        createSparkline('fundChart', [120, 122, 121, 123, 124, 125], '#10b981');
+        
+        // Investment Calculator
+        const initialInvestment = document.getElementById('initial-investment');
+        const annualReturn = document.getElementById('annual-return');
+        const timePeriod = document.getElementById('time-period');
+        const timePeriodValue = document.getElementById('time-period-value');
+        const initialAmount = document.getElementById('initial-amount');
+        const contributionsAmount = document.getElementById('contributions-amount');
+        const interestAmount = document.getElementById('interest-amount');
+        const futureValue = document.getElementById('future-value');
+        
+        // Initialize time period value
+        timePeriodValue.textContent = timePeriod.value;
+        
+        // Update time period value when slider changes
+        timePeriod.addEventListener('input', function() {
+            timePeriodValue.textContent = this.value;
+            calculateGrowth();
+        });
+        
+        // Add event listeners to inputs
+        [initialInvestment, annualReturn].forEach(input => {
+            input.addEventListener('input', calculateGrowth);
+        });
+        
+        // Calculate growth function
+        function calculateGrowth() {
+            const principal = parseFloat(initialInvestment.value) || 0;
+            const rate = (parseFloat(annualReturn.value) || 0) / 100;
+            const years = parseInt(timePeriod.value) || 0;
+            
+            // Future value calculation (compound interest)
+            const future = principal * Math.pow(1 + rate, years);
+            const interest = future - principal;
+            
+            // Update UI
+            initialAmount.textContent = `$${principal.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+            contributionsAmount.textContent = '$0.00';
+            interestAmount.textContent = `$${interest.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+            futureValue.textContent = `$${future.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+            
+            // Update chart
+            updateGrowthChart(principal, rate, years);
+        }
+        
+        // Initialize growth chart
+        const growthCtx = document.getElementById('growthChart').getContext('2d');
+        let growthChart = new Chart(growthCtx, {
+            type: 'line',
+            data: {
+                labels: [],
+                datasets: [{
+                    label: 'Investment Value',
+                    data: [],
+                    borderColor: '#3b82f6',
+                    backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                    borderWidth: 3,
+                    pointRadius: 0,
+                    tension: 0.4,
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            color: 'rgba(0, 0, 0, 0.05)'
+                        },
+                        ticks: {
+                            callback: function(value) {
+                                return '$' + value.toLocaleString();
+                            }
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
+                        }
+                    }
+                }
+            }
+        });
+        
+        // Update growth chart function
+        function updateGrowthChart(principal, rate, years) {
+            const labels = [];
+            const data = [];
+            
+            for (let i = 0; i <= years; i++) {
+                labels.push(i === 0 ? 'Now' : `Year ${i}`);
+                data.push(principal * Math.pow(1 + rate, i));
+            }
+            
+            growthChart.data.labels = labels;
+            growthChart.data.datasets[0].data = data;
+            growthChart.update();
+        }
+        
+        // Initialize calculator
+        calculateGrowth();
+    </script>
+</body>
+</html>

@@ -1,0 +1,279 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu - Savory Haven Bistro</title>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .menu-item {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .menu-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .price-tag {
+            background: linear-gradient(135deg, #d4af37, #f4d03f);
+        }
+        
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #d4af37, transparent);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white/95 backdrop-blur-sm z-50 shadow-sm">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <a href="resturant.html" class="text-2xl font-bold text-amber-900 font-['Playfair_Display']">Savory Haven</a>
+                <div class="flex space-x-8">
+                    <a href="resturant.html" class="text-gray-600 hover:text-amber-900 transition-colors">Home</a>
+                    <a href="resturantmenu.html" class="text-amber-900 font-medium border-b-2 border-amber-900 pb-1">Menu</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Back to Home Button -->
+    <div class="pt-20 pb-8 bg-white">
+        <div class="container mx-auto px-4">
+            <a href="resturant.html" class="inline-flex items-center text-amber-600 hover:text-amber-700 font-semibold">
+                <i data-feather="arrow-left" class="mr-2 w-4 h-4"></i>
+                Back to Home
+            </a>
+        </div>
+    </div>
+
+    <!-- Menu Header -->
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-5xl font-['Playfair_Display'] font-bold text-amber-900 mb-4">Our Menu</h1>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">Experience culinary excellence with our carefully crafted dishes made from the finest ingredients</p>
+        </div>
+    </section>
+
+    <!-- Appetizers -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-['Playfair_Display'] font-bold text-amber-900 text-center mb-12">Appetizers</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Item 1 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden menu-item">
+                    <div class="relative h-64">
+                        <img src="http://static.photos/food/640x360/10" alt="Truffle Arancini" class="w-full h-full object-cover">
+                        <div class="absolute top-4 right-4">
+                            <span class="price-tag text-white font-bold px-4 py-2 rounded-full">$16</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-amber-900 mb-2">Truffle Arancini</h3>
+                        <p class="text-gray-600 mb-4">Crispy saffron risotto balls filled with wild mushrooms and black truffle, served with parmesan cream sauce</p>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden menu-item">
+                    <div class="relative h-64">
+                        <img src="http://static.photos/food/640x360/11" alt="Burrata Caprese" class="w-full h-full object-cover">
+                        <div class="absolute top-4 right-4">
+                            <span class="price-tag text-white font-bold px-4 py-2 rounded-full">$18</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-amber-900 mb-2">Burrata Caprese</h3>
+                        <p class="text-gray-600 mb-4">Creamy burrata cheese with heirloom tomatoes, fresh basil, aged balsamic reduction, and extra virgin olive oil</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Courses -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-['Playfair_Display'] font-bold text-amber-900 text-center mb-12">Main Courses</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Item 3 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden menu-item">
+                    <div class="relative h-64">
+                        <img src="http://static.photos/food/640x360/12" alt="Filet Mignon" class="w-full h-full object-cover">
+                        <div class="absolute top-4 right-4">
+                            <span class="price-tag text-white font-bold px-4 py-2 rounded-full">$42</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-amber-900 mb-2">Filet Mignon</h3>
+                        <p class="text-gray-600 mb-4">8oz premium beef tenderloin with red wine reduction, roasted garlic mashed potatoes, and seasonal vegetables</p>
+                    </div>
+                </div>
+
+                <!-- Item 4 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden menu-item">
+                    <div class="relative h-64">
+                        <img src="http://static.photos/food/640x360/13" alt="Lobster Risotto" class="w-full h-full object-cover">
+                        <div class="absolute top-4 right-4">
+                            <span class="price-tag text-white font-bold px-4 py-2 rounded-full">$38</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-amber-900 mb-2">Lobster Risotto</h3>
+                        <p class="text-gray-600 mb-4">Maine lobster tail over creamy carnaroli risotto with saffron, white wine, and fresh herbs</p>
+                    </div>
+                </div>
+
+                <!-- Item 5 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden menu-item">
+                    <div class="relative h-64">
+                        <img src="http://static.photos/food/640x360/14" alt="Duck Confit" class="w-full h-full object-cover">
+                        <div class="absolute top-4 right-4">
+                            <span class="price-tag text-white font-bold px-4 py-2 rounded-full">$34</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-amber-900 mb-2">Duck Confit</h3>
+                        <p class="text-gray-600 mb-4">Slow-cooked duck leg with crispy skin, served with cherry gastrique, roasted root vegetables, and potato gratin</p>
+                    </div>
+                </div>
+
+                <!-- Item 6 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden menu-item">
+                    <div class="relative h-64">
+                        <img src="http://static.photos/food/640x360/15" alt="Wild Mushroom Pasta" class="w-full h-full object-cover">
+                        <div class="absolute top-4 right-4">
+                            <span class="price-tag text-white font-bold px-4 py-2 rounded-full">$26</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-amber-900 mb-2">Wild Mushroom Pasta</h3>
+                        <p class="text-gray-600 mb-4">Fresh tagliatelle with seasonal wild mushrooms, white truffle oil, parmesan, and fresh thyme</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seafood Specialties -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-['Playfair_Display'] font-bold text-amber-900 text-center mb-12">Seafood Specialties</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Item 7 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden menu-item">
+                    <div class="relative h-64">
+                        <img src="http://static.photos/food/640x360/16" alt="Pan-Seared Scallops" class="w-full h-full object-cover">
+                        <div class="absolute top-4 right-4">
+                            <span class="price-tag text-white font-bold px-4 py-2 rounded-full">$32</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-amber-900 mb-2">Pan-Seared Scallops</h3>
+                        <p class="text-gray-600 mb-4">Jumbo sea scallops with cauliflower purée, brown butter sauce, and crispy pancetta</p>
+                    </div>
+                </div>
+
+                <!-- Item 8 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden menu-item">
+                    <div class="relative h-64">
+                        <img src="http://static.photos/food/640x360/17" alt="Salmon en Papillote" class="w-full h-full object-cover">
+                        <div class="absolute top-4 right-4">
+                            <span class="price-tag text-white font-bold px-4 py-2 rounded-full">$28</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-amber-900 mb-2">Salmon en Papillote</h3>
+                        <p class="text-gray-600 mb-4">Atlantic salmon baked in parchment with lemon, herbs, white wine, and seasonal vegetables</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Desserts -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-['Playfair_Display'] font-bold text-amber-900 text-center mb-12">Desserts</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Item 9 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden menu-item">
+                    <div class="relative h-64">
+                        <img src="http://static.photos/food/640x360/18" alt="Chocolate Soufflé" class="w-full h-full object-cover">
+                        <div class="absolute top-4 right-4">
+                            <span class="price-tag text-white font-bold px-4 py-2 rounded-full">$14</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-amber-900 mb-2">Chocolate Soufflé</h3>
+                        <p class="text-gray-600 mb-4">Warm dark chocolate soufflé with a molten center, served with vanilla bean ice cream</p>
+                    </div>
+                </div>
+
+                <!-- Item 10 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden menu-item">
+                    <div class="relative h-64">
+                        <img src="http://static.photos/food/640x360/19" alt="Crème Brûlée" class="w-full h-full object-cover">
+                        <div class="absolute top-4 right-4">
+                            <span class="price-tag text-white font-bold px-4 py-2 rounded-full">$12</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-amber-900 mb-2">Vanilla Bean Crème Brûlée</h3>
+                        <p class="text-gray-600 mb-4">Classic French dessert with rich custard base and caramelized sugar crust, served with fresh berries</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-amber-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-2xl font-['Playfair_Display'] font-bold mb-4">Savory Haven</h3>
+                    <p class="text-amber-100">Fine dining experience in the heart of the city.</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Hours</h4>
+                    <p class="text-amber-100">Monday - Friday: 5pm - 10pm</p>
+                    <p class="text-amber-100">Saturday - Sunday: 4pm - 11pm</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Contact</h4>
+                    <p class="text-amber-100">123 Gourmet Avenue</p>
+                    <p class="text-amber-100">New York, NY 10001</p>
+                    <p class="text-amber-100">(555) 123-4567</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Follow Us</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-amber-100 hover:text-white transition-colors"><i data-feather="facebook"></i></a>
+                        <a href="#" class="text-amber-100 hover:text-white transition-colors"><i data-feather="instagram"></i></a>
+                        <a href="#" class="text-amber-100 hover:text-white transition-colors"><i data-feather="twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="section-divider my-8"></div>
+            <p class="text-center text-amber-200">&copy; 2024 Savory Haven Bistro. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        feather.replace();
+    </script>
+</body>
+</html>

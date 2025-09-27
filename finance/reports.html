@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinTrack Pro - Reports</title>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <style>
+        :root {
+            --primary-500: #3b82f6;
+            --primary-700: #1d4ed8;
+            --secondary-500: #10b981;
+            --secondary-300: #6ee7b7;
+        }
+        .bg-primary { background-color: var(--primary-500); }
+        .text-primary { color: var(--primary-500); }
+        .border-primary { border-color: var(--primary-500); }
+        .bg-secondary { background-color: var(--secondary-500); }
+        .text-secondary { color: var(--secondary-500); }
+        .dark-mode {
+            --primary-500: #60a5fa;
+            --primary-700: #3b82f6;
+            --secondary-500: #34d399;
+            --secondary-300: #6ee7b7;
+        }
+        .sortable:hover {
+            background-color: #f3f4f6;
+        }
+        .sortable::after {
+            content: "↕";
+            float: right;
+            opacity: 0.5;
+        }
+        .sortable.asc::after {
+            content: "↑";
+            opacity: 1;
+        }
+        .sortable.desc::after {
+            content: "↓";
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+    <!-- Navigation -->
+    <nav class="bg-white dark:bg-gray-800 shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <i data-feather="trending-up" class="h-8 w-8 text-primary"></i>
+                        <span class="ml-2 text-xl font-bold">FinTrack Pro</span>
+                    </div>
+                    <div class="hidden md:ml-10 md:flex md:space-x-8">
+                        <a href="index.html" class="text-gray-500 dark:text-gray-300 hover:border-gray-300 hover:text-gray-700 dark:hover:text-gray-200 inline-flex items-center px-1 pt-1 text-sm font-medium">Dashboard</a>
+                        <a href="reports.html" class="border-b-2 border-primary text-gray-900 dark:text-white inline-flex items-center px-1 pt-1 text-sm font-medium">Reports</a>
+                        <a href="portfolio.html" class="text-gray-500 dark:text-gray-300 hover:border-gray-300 hover:text-gray-700 dark:hover:text-gray-200 inline-flex items-center px-1 pt-1 text-sm font-medium">Portfolio</a>
+                        <a href="contact.html" class="text-gray-500 dark:text-gray-300 hover:border-gray-300 hover:text-gray-700 dark:hover:text-gray-200 inline-flex items-center px-1 pt-1 text-sm font-medium">Contact</a>
+                    </div>
+                </div>
+                <div class="flex items-center">
+                    <button id="theme-toggle" class="p-2 rounded-full text-gray-500 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
+                        <i data-feather="moon" class="h-5 w-5"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="md:flex md:items-center md:justify-between">
+            <div class="flex-1 min-w-0">
+                <h2 class="text-2xl font-bold leading-7 text-gray-900 dark:text-white sm:text-3xl sm:truncate">
+                    Financial Reports
+                </h2>
+                <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+                    Detailed transaction history and financial analysis
+                </p>
+            </div>
+            <div class="mt-4 flex md:mt-0 md:ml-4">
+                <button type="button" class="ml-3 inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primary hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
+                    <i data-feather="download" class="mr-2 h-4 w-4"></i>
+                    Export Data
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Filters -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-white dark:bg-gray-800 shadow rounded-lg p-6 mb-6">
+            <h3 class="text-lg font-medium text-gray-900 dark:text-white mb-4">Filter Transactions</h3>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                <div>
+                    <label for="date-from" class="block text-sm font-medium text-gray-700 dark:text-gray-300">From Date</label>
+                    <input type="date" id="date-from" class="mt-1 block w-full border border-gray-300 dark:border-gray-600 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-primary focus:border-primary dark:bg-gray-700 dark:text-white">
+                </div>
+                <div>
+                    <label for="date-to" class="block text-sm font-medium text-gray-700 dark:text-gray-300">To Date</label>
+                    <input type="date" id="date-to" class="mt-1 block w-full border border-gray-300 dark:border-gray-600 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-primary focus:border-primary dark:bg-gray-700 dark:text-white">
+                </div>
+                <div>
+                    <label for="category-filter" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Category</label>
+                    <select id="category-filter" multiple class="mt-1 block w-full bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-primary focus:border-primary dark:text-white">
+                        <option value="salary">Salary</option>
+                        <option value="freelance">Freelance</option>
+                        <option value="investment">Investment</option>
+                        <option value="rent">Rent</option>
+                        <option value="utilities">Utilities</option>
+                        <option value="groceries">Groceries</option>
+                        <option value="entertainment">Entertainment</option>
+                        <option value="transportation">Transportation</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="amount-range" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Amount Range</label>
+                    <div class="flex items-center mt-1">
+                        <input type="number" id="amount-min" placeholder="Min" class="w-1/2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-primary focus:border-primary dark:bg-gray-700 dark:text-white">
+                        <span class="mx-2 text-gray-500">-</span>
+                        <input type="number" id="amount-max" placeholder="Max" class="w-1/2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-primary focus:border-primary dark:bg-gray-700 dark:text-white">
+                    </div>
+                </div>
+            </div>
+            <div class="mt-4">
+                <button id="reset-filters" class="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300">
+                    Reset Filters
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Transactions Table -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
+        <div class="bg-white dark:bg-gray-800 shadow rounded-lg overflow-hidden">
+            <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+                <thead class="bg-gray-50 dark:bg-gray-700">
+                    <tr>
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider sortable" data-sort="date">
+                            Date
+                        </th>
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider sortable" data-sort="description">
+                            Description
+                        </th>
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider sortable" data-sort="category">
+                            Category
+                        </th>
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider sortable" data-sort="amount">
+                            Amount
+                        </th>
+                    </tr>
+                </thead>
+                <tbody id="transactions-table-body" class="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
+                    <!-- Rows will be populated by JavaScript -->
+                </tbody>
+            </table>
+            
+            <!-- Pagination -->
+            <div class="bg-white dark:bg-gray-800 px-4 py-3 flex items-center justify-between border-t border-gray-200 dark:border-gray-700 sm:px-6">
+                <div class="flex-1 flex justify-between sm:hidden">
+                    <a href="#" class="relative inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-600 text-sm font-medium rounded-md text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                        Previous
+                    </a>
+                    <a href="#" class="ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-600 text-sm font-medium rounded-md text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                        Next
+                    </a>
+                </div>
+                <div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
+                    <div>
+                        <p class="text-sm text-gray-700 dark:text-gray-300">
+                            Showing <span class="font-medium">1</span> to <span class="font-medium">10</span> of <span class="font-medium">97</span> results
+                        </p>
+                    </div>
+                    <div>
+                        <nav class="relative z-0 inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination">
+                            <a href="#" class="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-sm font-medium text-gray-500 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                <span class="sr-only">Previous</span>
+                                <i data-feather="chevron-left" class="h-5 w-5"></i>
+                            </a>
+                            <a href="#" class="relative inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                1
+                            </a>
+                            <a href="#" class="relative inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                2
+                            </a>
+                            <a href="#" class="relative inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                3
+                            </a>
+                            <a href="#" class="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-sm font-medium text-gray-500 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                <span class="sr-only">Next</span>
+                                <i data-feather="chevron-right" class="h-5 w-5"></i>
+                            </a>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white dark:bg-gray-800">
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+            <div class="border-t border-gray-200 dark:border-gray-700 pt-8">
+                <p class="text-base text-gray-400 dark:text-gray-500 text-center">
+                    &copy; 2023 FinTrack Pro. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Feather Icons
+        feather.replace();
+        
+        // Theme toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = themeToggle.querySelector('i');
+        
+        themeToggle.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+            if (document.documentElement.classList.contains('dark')) {
+                themeIcon.setAttribute('data-feather', 'sun');
+            } else {
+                themeIcon.setAttribute('data-feather', 'moon');
+            }
+            feather.replace();
+        });
+        
+        // Sample transaction data
+        const transactions = [
+            { date: '2023-07-15', description: 'Salary Deposit', category: 'Salary', amount: 4500.00 },
+            { date: '2023-07-14', description: 'Grocery Shopping', category: 'Groceries', amount: -125.75 },
+            { date: '2023-07-12', description: 'Electricity Bill', category: 'Utilities', amount: -89.50 },
+            { date: '2023-07-10', description: 'Freelance Project', category: 'Freelance', amount: 1200.00 },
+            { date: '2023-07-08', description: 'Dinner Out', category: 'Entertainment', amount: -65.25 },
+            { date: '2023-07-05', description: 'Monthly Rent', category: 'Rent', amount: -1800.00 },
+            { date: '2023-07-03', description: 'Gas Station', category: 'Transportation', amount: -45.30 },
+            { date: '2023-07-01', description: 'Investment Return', category: 'Investment', amount: 230.50 },
+            { date: '2023-06-28', description: 'Internet Bill', category: 'Utilities', amount: -65.00 },
+            { date: '2023-06-25', description: 'Movie Tickets', category: 'Entertainment', amount: -32.00 }
+        ];
+        
+        // Populate table
+        const tableBody = document.getElementById('transactions-table-body');
+        
+        function populateTable(data) {
+            tableBody.innerHTML = '';
+            data.forEach(transaction => {
+                const row = document.createElement('tr');
+                row.className = 'hover:bg-gray-50 dark:hover:bg-gray-700';
+                row.innerHTML = `
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">${transaction.date}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">${transaction.description}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">${transaction.category}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm ${transaction.amount >= 0 ? 'text-green-600' : 'text-red-600'}">
+                        ${transaction.amount >= 0 ? '+' : ''}${transaction.amount.toFixed(2)}
+                    </td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+        
+        populateTable(transactions);
+        
+        // Sorting functionality
+        const sortHeaders = document.querySelectorAll('.sortable');
+        let currentSort = { column: 'date', direction: 'asc' };
+        
+        sortHeaders.forEach(header => {
+            header.addEventListener('click', () => {
+                const column = header.getAttribute('data-sort');
+                let direction = 'asc';
+                
+                if (currentSort.column === column) {
+                    direction = currentSort.direction === 'asc' ? 'desc' : 'asc';
+                }
+                
+                // Update UI
+                sortHeaders.forEach(h => h.classList.remove('asc', 'desc'));
+                header.classList.add(direction);
+                
+                // Sort data
+                const sortedTransactions = [...transactions].sort((a, b) => {
+                    let aVal = a[column];
+                    let bVal = b[column];
+                    
+                    if (column === 'date') {
+                        aVal = new Date(aVal);
+                        bVal = new Date(bVal);
+                    } else if (column === 'amount') {
+                        // Already numbers
+                    } else {
+                        aVal = aVal.toLowerCase();
+                        bVal = bVal.toLowerCase();
+                    }
+                    
+                    if (direction === 'asc') {
+                        return aVal > bVal ? 1 : -1;
+                    } else {
+                        return aVal < bVal ? 1 : -1;
+                    }
+                });
+                
+                currentSort = { column, direction };
+                populateTable(sortedTransactions);
+            });
+        });
+        
+        // Filter functionality
+        const dateFrom = document.getElementById('date-from');
+        const dateTo = document.getElementById('date-to');
+        const categoryFilter = document.getElementById('category-filter');
+        const amountMin = document.getElementById('amount-min');
+        const amountMax = document.getElementById('amount-max');
+        const resetFilters = document.getElementById('reset-filters');
+        
+        function applyFilters() {
+            let filtered = [...transactions];
+            
+            // Date filter
+            if (dateFrom.value) {
+                filtered = filtered.filter(t => t.date >= dateFrom.value);
+            }
+            if (dateTo.value) {
+                filtered = filtered.filter(t => t.date <= dateTo.value);
+            }
+            
+            // Category filter
+            const selectedCategories = Array.from(categoryFilter.selectedOptions).map(o => o.value);
+            if (selectedCategories.length > 0) {
+                filtered = filtered.filter(t => selectedCategories.includes(t.category));
+            }
+            
+            // Amount filter
+            if (amountMin.value) {
+                filtered = filtered.filter(t => t.amount >= parseFloat(amountMin.value));
+            }
+            if (amountMax.value) {
+                filtered = filtered.filter(t => t.amount <= parseFloat(amountMax.value));
+            }
+            
+            populateTable(filtered);
+        }
+        
+        // Add event listeners to all filters
+        [dateFrom, dateTo, categoryFilter, amountMin, amountMax].forEach(filter => {
+            filter.addEventListener('input', applyFilters);
+            filter.addEventListener('change', applyFilters);
+        });
+        
+        // Reset filters
+        resetFilters.addEventListener('click', () => {
+            dateFrom.value = '';
+            dateTo.value = '';
+            categoryFilter.selectedIndex = -1;
+            amountMin.value = '';
+            amountMax.value = '';
+            populateTable(transactions);
+        });
+    </script>
+</body>
+</html>

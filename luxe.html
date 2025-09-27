@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LUXE | Premium Web Design</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;900&display=swap");
+      :root {
+        --color-bg: #05060a; /* very dark navy/black background */
+        --color-primary: #1e90ff; /* bright electric blue glow */
+        --color-secondary: #00cfff; /* cyan highlights from reflections */
+        --color-accent: #4b6fff; /* softer indigo/blue accent */
+        --color-text: #e6f1ff; /* off-white with a cool tint */
+        --color-muted: #7a8ca5; /* muted gray-blue for secondary text */
+      }
+
+      body {
+        font-family: "Montserrat", sans-serif;
+        background-color: var(--color-bg);
+        color: var(--color-text);
+      }
+      .glass-card {
+        background: rgba(10, 10, 15, 0.95);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      section:not(:first-child) {
+        background-color: var(--color-bg);
+      }
+      .neon-text {
+        text-shadow: 0 0 8px var(--color-primary);
+      }
+      .hover-glow:hover {
+        box-shadow: 0 0 20px var(--color-accent);
+      }
+      .template-card {
+        transition: all 0.3s ease;
+      }
+      .template-card:hover {
+        transform: translateY(-10px);
+      }
+      .gradient-bg {
+        background: linear-gradient(135deg, var(--color-bg) 0%, #000000 100%);
+        mask-image: linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 1) 0%,
+          rgba(0, 0, 0, 1) 85%,
+          rgba(0, 0, 0, 0) 100%
+        );
+        -webkit-mask-image: linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 1) 0%,
+          rgba(0, 0, 0, 1) 85%,
+          rgba(0, 0, 0, 0) 100%
+        );
+      }
+    </style>
+  </head>
+  <body>
+    <div class="relative z-10">
+      <!-- Navigation -->
+      <nav
+        class="fixed w-full py-4 px-6 flex justify-between items-center transition-all duration-300 z-50"
+        style="background: transparent"
+      >
+        <div class="text-2xl font-bold text-[var(--color-primary)] neon-text">
+          LUXE
+        </div>
+        <div class="hidden md:flex space-x-8">
+          <a
+            href="#about"
+            class="text-white hover:text-[var(--color-primary)] transition font-medium"
+            >About</a
+          >
+          <a
+            href="#templates"
+            class="text-white hover:text-[var(--color-primary)] transition font-medium"
+            >Templates</a
+          >
+          <a
+            href="#contact"
+            class="text-white hover:text-[var(--color-primary)] transition font-medium"
+            >Contact</a
+          >
+        </div>
+        <button class="md:hidden">
+          <i data-feather="menu"></i>
+        </button>
+      </nav>
+
+      <!-- Hero Section -->
+      <section
+        class="min-h-screen flex items-center justify-center px-6 pt-20 relative"
+      >
+        <div
+          class="absolute inset-0 z-0 bg-cover bg-center"
+          style="
+            background-image: url('https://huggingface.co/spaces/KriswebD123/webdevelopment/resolve/main/images/2151255153.jpg');
+            filter: brightness(0.7) sepia(0.3) hue-rotate(-10deg);
+          "
+        ></div>
+        <div
+          class="text-center max-w-4xl mx-auto p-10 rounded-xl relative z-10"
+          data-aos="fade-up"
+        >
+          <h1 class="text-5xl md:text-7xl font-bold mb-6 text-white">
+            Websites That
+            <span
+              class="text-transparent bg-clip-text bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-accent)]"
+              >Work</span
+            >
+            For You
+          </h1>
+          <p class="text-xl md:text-2xl mb-10 text-[var(--color-text)]">
+            Premium web design solutions tailored to elevate your business
+            presence
+          </p>
+          <div
+            class="flex flex-col sm:flex-row justify-center items-center gap-4"
+          >
+            <a
+              href="#contact"
+              class="bg-gradient-to-r from-[var(--color-primary)] to-[#0066FF] hover:from-[#0066FF] hover:to-[var(--color-primary)] text-white font-bold py-4 px-8 rounded-full text-lg hover-glow transition-all shadow-lg flex-shrink-0"
+            >
+              Start Your Website
+            </a>
+            <a
+              href="#templates"
+              class="bg-transparent border-2 border-[var(--color-primary)] text-white font-bold py-4 px-8 rounded-full text-lg hover:bg-[var(--color-primary)] transition-all shadow-lg flex-shrink-0"
+            >
+              View Templates
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- About Section -->
+      <section id="about" class="py-20 px-6 gradient-bg">
+        <div class="max-w-6xl mx-auto">
+          <h2
+            class="text-3xl md:text-4xl font-bold mb-16 text-center"
+            data-aos="fade-up"
+          >
+            Crafting Digital Excellence
+          </h2>
+          <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div class="glass-card p-8 rounded-xl" data-aos="fade-right">
+              <div class="flex items-center mb-6">
+                <div
+                  class="w-16 h-16 rounded-full bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-accent)] flex items-center justify-center"
+                >
+                  <i data-feather="user" class="text-white w-8 h-8"></i>
+                </div>
+                <h3 class="text-2xl font-bold ml-4">About Me</h3>
+              </div>
+              <p class="mb-4">
+                With over 8 years in the industry, I specialize in creating
+                high-performance websites that convert visitors into customers.
+              </p>
+              <p>
+                My approach combines cutting-edge design with strategic
+                functionality to deliver websites that not only look stunning
+                but drive real business results.
+              </p>
+            </div>
+            <div class="grid grid-cols-2 gap-4" data-aos="fade-left">
+              <div class="glass-card p-6 rounded-lg text-center">
+                <i
+                  data-feather="award"
+                  class="w-10 h-10 mx-auto text-[var(--color-primary)] mb-3"
+                ></i>
+                <h4 class="font-bold mb-2">Premium Quality</h4>
+                <p class="text-sm">Industry-leading design standards</p>
+              </div>
+              <div class="glass-card p-6 rounded-lg text-center">
+                <i
+                  data-feather="clock"
+                  class="w-10 h-10 mx-auto text-[var(--color-primary)] mb-3"
+                ></i>
+                <h4 class="font-bold mb-2">Fast Delivery</h4>
+                <p class="text-sm">2-3 week turnaround</p>
+              </div>
+              <div class="glass-card p-6 rounded-lg text-center">
+                <i
+                  data-feather="smartphone"
+                  class="w-10 h-10 mx-auto text-[var(--color-primary)] mb-3"
+                ></i>
+                <h4 class="font-bold mb-2">Mobile Optimized</h4>
+                <p class="text-sm">Flawless on all devices</p>
+              </div>
+              <div class="glass-card p-6 rounded-lg text-center">
+                <i
+                  data-feather="shield"
+                  class="w-10 h-10 mx-auto text-[var(--color-primary)] mb-3"
+                ></i>
+                <h4 class="font-bold mb-2">Ongoing Support</h4>
+                <p class="text-sm">1 year included</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Templates Section -->
+      <section id="templates" class="py-20 px-6">
+        <div class="max-w-6xl mx-auto">
+          <h2
+            class="text-3xl md:text-4xl font-bold mb-4 text-center"
+            data-aos="fade-up"
+          >
+            Premium Templates
+          </h2>
+          <p class="text-center mb-16 max-w-2xl mx-auto" data-aos="fade-up">
+            Customizable designs for your specific industry needs
+          </p>
+
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Real Estate Template -->
+            <div
+              class="template-card glass-card rounded-xl overflow-hidden hover-glow border border-transparent hover:border-[var(--color-primary)]"
+              data-aos="flip-left"
+            >
+              <div
+                class="h-48 bg-cover bg-center"
+                style="
+                  background-image: url('images/Realestate-site-img\ .png');
+                "
+              ></div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">Real Estate</h3>
+                <p class="text-gray-300 mb-4">
+                  Elegant design for real estate agencies with property listings
+                </p>
+                <a
+                  href="realestate.html"
+                  target="_blank"
+                  class="bg-gradient-to-r from-[var(--color-primary)] to-[#0066FF] hover:from-[#0066FF] hover:to-[var(--color-primary)] text-white font-bold py-4 px-8 rounded-full text-lg hover-glow transition-all shadow-lg inline-flex items-center gap-2"
+                >
+                  View Demo
+                  <i data-feather="arrow-right" class="ml-2 w-4 h-4"></i>
+                </a>
+              </div>
+            </div>
+
+            <!-- Code Craft Template -->
+            <div
+              class="template-card glass-card rounded-xl overflow-hidden hover-glow border border-transparent hover:border-[var(--color-primary)]"
+              data-aos="flip-left"
+              data-aos-delay="100"
+            >
+              <div
+                class="h-48 bg-cover bg-center"
+                style="background-image: url('images/CodeCraft.png')"
+              ></div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">Code Craft</h3>
+                <p class="text-gray-300 mb-4">
+                  Sleek, modern design for tech startups and SaaS platforms
+                </p>
+
+                <a
+                  href="codecraft/codecraft.html"
+                  target="_blank"
+                  class="bg-gradient-to-r from-[var(--color-primary)] to-[#0066FF] hover:from-[#0066FF] hover:to-[var(--color-primary)] text-white font-bold py-4 px-8 rounded-full text-lg hover-glow transition-all shadow-lg inline-flex items-center gap-2"
+                >
+                  View Demo
+                  <i data-feather="arrow-right" class="ml-2 w-4 h-4"></i>
+                </a>
+              </div>
+            </div>
+
+            <!-- Salon Template -->
+            <div
+              class="template-card glass-card rounded-xl overflow-hidden hover-glow border border-transparent hover:border-[var(--color-primary)]"
+              data-aos="flip-left"
+              data-aos-delay="200"
+            >
+              <div
+                class="h-48 bg-cover bg-center"
+                style="background-image: url('images/HairSalon.png')"
+              ></div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">Hair Salon</h3>
+                <p class="text-gray-300 mb-4">
+                  Stylish booking system for hair and beauty professionals
+                </p>
+                <a
+                  href="hairsalon.html"
+                  target="_blank"
+                  class="bg-gradient-to-r from-[var(--color-primary)] to-[#0066FF] hover:from-[#0066FF] hover:to-[var(--color-primary)] text-white font-bold py-4 px-8 rounded-full text-lg hover-glow transition-all shadow-lg inline-flex items-center gap-2"
+                >
+                  View Demo
+                  <i data-feather="arrow-right" class="ml-2 w-4 h-4"></i>
+                </a>
+              </div>
+            </div>
+
+            <!-- Restaurant Template -->
+            <div
+              class="template-card glass-card rounded-xl overflow-hidden hover-glow border border-transparent hover:border-[var(--color-primary)]"
+              data-aos="flip-left"
+            >
+              <div
+                class="h-48 bg-cover bg-center"
+                style="background-image: url('images/resturant.png')"
+              ></div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">Resturant</h3>
+                <p class="text-gray-300 mb-4">
+                  Vibrant design for restaurants with menu and reservation
+                  system
+                </p>
+                <a
+                  href="/resturant/resturant.html"
+                  target="_blank"
+                  class="bg-gradient-to-r from-[var(--color-primary)] to-[#0066FF] hover:from-[#0066FF] hover:to-[var(--color-primary)] text-white font-bold py-4 px-8 rounded-full text-lg hover-glow transition-all shadow-lg inline-flex items-center gap-2"
+                >
+                  View Demo
+                  <i data-feather="arrow-right" class="ml-2 w-4 h-4"></i>
+                </a>
+              </div>
+            </div>
+
+            <!-- Shop Template -->
+            <div
+              class="template-card glass-card rounded-xl overflow-hidden hover-glow border border-transparent hover:border-[var(--color-primary)]"
+              data-aos="flip-left"
+              data-aos-delay="100"
+            >
+              <div
+                class="h-48 bg-cover bg-center"
+                style="background-image: url('images/Shop.png')"
+              ></div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">Creative Portfolio</h3>
+                <p class="text-gray-300 mb-4">
+                  Minimalist showcase for designers, photographers, and artists
+                </p>
+                <a
+                  href="shop/index.html"
+                  target="_blank"
+                  class="bg-gradient-to-r from-[var(--color-primary)] to-[#0066FF] hover:from-[#0066FF] hover:to-[var(--color-primary)] text-white font-bold py-4 px-8 rounded-full text-lg hover-glow transition-all shadow-lg inline-flex items-center gap-2"
+                >
+                  View Demo
+                  <i data-feather="arrow-right" class="ml-2 w-4 h-4"></i>
+                </a>
+              </div>
+            </div>
+
+            <!-- FinTrack Template -->
+            <div
+              class="template-card glass-card rounded-xl overflow-hidden hover-glow border border-transparent hover:border-[var(--color-primary)]"
+              data-aos="flip-left"
+              data-aos-delay="200"
+            >
+              <div
+                class="h-48 bg-cover bg-center"
+                style="background-image: url('images/FinTrack.png')"
+              ></div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-2">Modern Clinic</h3>
+                <p class="text-gray-300 mb-4">
+                  Professional design for healthcare providers with patient
+                  portal
+                </p>
+                <a
+                  href="finance/index.html"
+                  target="_blank"
+                  class="bg-gradient-to-r from-[var(--color-primary)] to-[#0066FF] hover:from-[#0066FF] hover:to-[var(--color-primary)] text-white font-bold py-4 px-8 rounded-full text-lg hover-glow transition-all shadow-lg inline-flex items-center gap-2"
+                >
+                  View Demo
+                  <i data-feather="arrow-right" class="ml-2 w-4 h-4"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA Section -->
+      <section class="py-20 px-6 gradient-bg">
+        <div class="max-w-4xl mx-auto text-center">
+          <h2 class="text-3xl md:text-4xl font-bold mb-6" data-aos="fade-up">
+            Ready to Elevate Your Online Presence?
+          </h2>
+          <p class="text-xl mb-10" data-aos="fade-up" data-aos-delay="100">
+            Let's create something extraordinary together
+          </p>
+          <a
+            href="#contact"
+            class="bg-gradient-to-r from-[var(--color-primary)] to-[#0066FF] hover:from-[#0066FF] hover:to-[var(--color-primary)] text-white font-bold py-4 px-8 rounded-full text-lg hover-glow transition-all inline-block"
+            data-aos="fade-up"
+            data-aos-delay="200"
+            data-aos-anchor-placement="center-bottom"
+          >
+            Start Your Project
+          </a>
+        </div>
+      </section>
+
+      <!-- Contact Section -->
+      <section id="contact" class="py-20 px-6">
+        <div class="max-w-4xl mx-auto glass-card p-10 rounded-xl">
+          <h2
+            class="text-3xl md:text-4xl font-bold mb-10 text-center"
+            data-aos="fade-up"
+          >
+            Get In Touch
+          </h2>
+
+          <div class="text-center" data-aos="fade-up">
+            <a
+              href="mailto:mckriskoo21@gmail.com?subject=Project%20Inquiry&body=Hi%20there,%20I%27m%20interested%20in%20working%20with%20you."
+              class="bg-gradient-to-r from-[var(--color-primary)] to-[#0066FF] hover:from-[#0066FF] hover:to-[var(--color-primary)] text-white font-bold py-4 px-8 rounded-full text-lg hover-glow transition-all inline-block shadow-lg"
+            >
+              Send Me an Email
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="py-10 px-6">
+        <div class="max-w-6xl mx-auto">
+          <div class="flex flex-col md:flex-row justify-between items-center">
+            <div class="text-2xl font-bold neon-text mb-4 md:mb-0">LUXE</div>
+            <div class="flex space-x-6">
+              <a
+                href="#"
+                class="hover:text-[var(--color-primary)] transition"
+                data-aos="fade-up"
+                data-aos-delay="100"
+                ><i data-feather="instagram"></i
+              ></a>
+              <a
+                href="#"
+                class="hover:text-[var(--color-primary)] transition"
+                data-aos="fade-up"
+                data-aos-delay="200"
+                ><i data-feather="twitter"></i
+              ></a>
+              <a
+                href="#"
+                class="hover:text-[var(--color-primary)] transition"
+                data-aos="fade-up"
+                data-aos-delay="300"
+                ><i data-feather="linkedin"></i
+              ></a>
+              <a
+                href="#"
+                class="hover:text-[var(--color-primary)] transition"
+                data-aos="fade-up"
+                data-aos-delay="400"
+                ><i data-feather="dribbble"></i
+              ></a>
+            </div>
+          </div>
+          <div class="mt-8 text-center text-gray-400 text-sm">
+            © 2023 LUXE Web Design. All rights reserved.
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      // Hide navbar on scroll down, show only when near top
+      let prevScrollpos = window.pageYOffset;
+      const navbar = document.querySelector("nav");
+      const threshold = document.body.scrollHeight * 0.1; // 10% from top
+
+      window.onscroll = function () {
+        const currentScrollPos = window.pageYOffset;
+        if (currentScrollPos < threshold) {
+          navbar.style.top = "0";
+        } else if (prevScrollpos > currentScrollPos) {
+          // Only show if scrolling up AND we're near top
+          if (currentScrollPos < threshold * 2) {
+            navbar.style.top = "0";
+          }
+        } else {
+          navbar.style.top = "-80px";
+        }
+        prevScrollpos = currentScrollPos;
+      };
+    </script>
+    <script>
+      AOS.init({
+        duration: 800,
+        easing: "ease-in-out",
+        once: true,
+      });
+    </script>
+    <script>
+      feather.replace();
+
+      function sendMessage() {
+        // Get form values
+        const name = document.querySelector('input[type="text"]').value;
+        const email = document.querySelector('input[type="email"]').value;
+        const message = document.querySelector("textarea").value;
+
+        // Simple validation
+        if (name && email && message) {
+          alert(
+            `Thank you, ${name}! Your message has been sent. We'll contact you soon at ${email}.`
+          );
+          // Here you would typically send the data to your backend
+        } else {
+          alert("Please fill out all fields.");
+        }
+      }
+    </script>
+  </body>
+</html>

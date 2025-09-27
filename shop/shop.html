@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopSphere Emporium - Shop</title>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6',
+                        secondary: '#1E293B',
+                        accent: '#F59E0B'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #F59E0B;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .product-card {
+            transition: all 0.3s ease;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .filter-active {
+            background-color: #3B82F6;
+            color: white;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <a href="index.html" class="text-2xl font-bold text-secondary">ShopSphere 🛍️</a>
+                
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="nav-link text-gray-700 hover:text-primary">Home</a>
+                    <a href="shop.html" class="nav-link text-primary font-semibold">Shop</a>
+                    <a href="cart.html" class="nav-link text-gray-700 hover:text-primary flex items-center">
+                        Cart
+                        <span id="cart-count" class="ml-1 bg-accent text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">0</span>
+                    </a>
+                    <a href="contact.html" class="nav-link text-gray-700 hover:text-primary">Contact</a>
+                </div>
+
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-700">
+                        <i data-feather="menu"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="index.html" class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded">Home</a>
+                <a href="shop.html" class="block px-3 py-2 text-primary font-semibold bg-gray-100 rounded">Shop</a>
+                <a href="cart.html" class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded flex items-center">
+                    Cart
+                    <span id="mobile-cart-count" class="ml-2 bg-accent text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">0</span>
+                </a>
+                <a href="contact.html" class="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Shop Header -->
+    <section class="bg-primary text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <h1 class="text-4xl font-bold mb-4">Our Products</h1>
+            <p class="text-xl opacity-90">Discover our wide selection of quality items</p>
+        </div>
+    </section>
+
+    <!-- Search and Filters -->
+    <section class="max-w-7xl mx-auto px-4 py-8">
+        <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+            <!-- Search Bar -->
+            <div class="mb-6">
+                <div class="relative">
+                    <input type="text" id="search-input" placeholder="Search products..." class="w-full p-4 pl-12 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                    <i data-feather="search" class="absolute left-4 top-4 text-gray-400"></i>
+                </div>
+            </div>
+
+            <!-- Filters -->
+            <div class="flex flex-wrap gap-4">
+                <div>
+                    <h3 class="font-semibold mb-2">Category</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <button class="filter-btn px-4 py-2 bg-gray-200 rounded-full hover:bg-gray-300" data-filter="all">All</button>
+                        <button class="filter-btn px-4 py-2 bg-gray-200 rounded-full hover:bg-gray-300" data-filter="electronics">Electronics</button>
+                        <button class="filter-btn px-4 py-2 bg-gray-200 rounded-full hover:bg-gray-300" data-filter="home">Home & Garden</button>
+                        <button class="filter-btn px-4 py-2 bg-gray-200 rounded-full hover:bg-gray-300" data-filter="fashion">Fashion</button>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="font-semibold mb-2">Price Range</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <button class="filter-btn px-4 py-2 bg-gray-200 rounded-full hover:bg-gray-300" data-price="all">All</button>
+                        <button class="filter-btn px-4 py-2 bg-gray-200 rounded-full hover:bg-gray-300" data-price="0-50">$0 - $50</button>
+                        <button class="filter-btn px-4 py-2 bg-gray-200 rounded-full hover:bg-gray-300" data-price="50-100">$50 - $100</button>
+                        <button class="filter-btn px-4 py-2 bg-gray-200 rounded-full hover:bg-gray-300" data-price="100+">$100+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Products Grid -->
+        <div id="products-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            <!-- Products will be dynamically loaded here -->
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-secondary text-white py-12">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">ShopSphere 🛍️</h3>
+                    <p class="text-gray-300">Your one-stop destination for quality products and exceptional service.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-300 hover:text-white transition">Home</a></li>
+                        <li><a href="shop.html" class="text-gray-300 hover:text-white transition">Shop</a></li>
+                        <li><a href="contact.html" class="text-gray-300 hover:text-white transition">Contact</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition">About Us</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Categories</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-300 hover:text-white transition">Electronics</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition">Home & Garden</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition">Fashion</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition">Sports</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Connect With Us</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-300 hover:text-white transition">
+                            <i data-feather="facebook"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white transition">
+                            <i data-feather="twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white transition">
+                            <i data-feather="instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white transition">
+                            <i data-feather="linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-600 mt-8 pt-8 text-center text-gray-300">
+                <p>&copy; 2024 ShopSphere Emporium. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Product data
+        const products = [
+            {
+                id: 1,
+                name: "Smart Watch Pro",
+                description: "Advanced fitness tracking and smart notifications",
+                price: 299.99,
+                category: "electronics",
+                image: "http://static.photos/technology/640x360/1"
+            },
+            {
+                id: 2,
+                name: "Wireless Earbuds",
+                description: "Crystal clear sound with noise cancellation",
+                price: 159.99,
+                category: "electronics",
+                image: "http://static.photos/technology/640x360/2"
+            },
+            {
+                id: 3,
+                name: "Ergonomic Laptop Stand",
+                description: "Adjustable aluminum stand for better posture",
+                price: 89.99,
+                category: "electronics",
+                image: "http://static.photos/technology/640x360/3"
+            },
+            {
+                id: 4,
+                name: "Organic Cotton T-Shirt",
+                description: "Comfortable and eco-friendly everyday wear",
+                price: 29.99,
+                category: "fashion",
+                image: "http://static.photos/people/640x360/4"
+            },
+            {
+                id: 5,
+                name: "Stainless Steel Water Bottle",
+                description: "Keep your drinks hot or cold for hours",
+                price: 24.99,
+                category: "home",
+                image: "http://static.photos/minimal/640x360/5"
+            },
+            {
+                id: 6,
+                name: "Bluetooth Speaker",
+                description: "Portable speaker with 360° sound",
+                price: 79.99,
+                category: "electronics",
+                image: "http://static.photos/technology/640x360/6"
+            },
+            {
+                id: 7,
+                name: "Leather Wallet",
+                description: "Genuine leather wallet with multiple card slots",
+                price: 49.99,
+                category: "fashion",
+                image: "http://static.photos/black/640x360/7"
+            },
+            {
+                id: 8,
+                name: "Desk Lamp",
+                description: "Adjustable LED desk lamp with touch controls",
+                price: 39.99,
+                category: "home",
+                image: "http://static.photos/office/640x360/8"
+            },
+            {
+                id: 9,
+                name: "Fitness Tracker",
+                description: "Track steps, heart rate, and sleep patterns",
+                price: 129.99,
+                category: "electronics",
+                image: "http://static.photos/sport/640x360/9"
+            },
+            {
+                id: 10,
+                name: "Cotton Bed Sheets",
+                description: "Soft and breathable 4-piece bedding set",
+                price: 69.99,
+                category: "home",
+                image: "http://static.photos/indoor/640x360/10"
+            },
+            {
+                id: 11,
+                name: "Sunglasses",
+                description: "UV protection sunglasses with polarized lenses",
+                price: 89.99,
+                category: "fashion",
+                image: "http://static.photos/people/640x360/11"
+            },
+            {
+                id: 12,
+                name: "Backpack",
+                description: "Water-resistant backpack with laptop compartment",
+                price: 59.99,
+                category: "fashion",
+                image: "http://static.photos/outdoor/640x360/12"
+            }
+        ];
+
+        // Cart functionality
+        class Cart {
+            constructor() {
+                this.items = JSON.parse(localStorage.getItem('cart')) || [];
+                this.updateCartCount();
+            }
+
+            addItem(product) {
+                const existingItem = this.items.find(item => item.id === product.id);
+                if (existingItem) {
+                    existingItem.quantity += 1;
+                } else {
+                    this.items.push({...product, quantity: 1});
+                }
+                this.save();
+                this.updateCartCount();
+                this.showAddedToCart();
+            }
+
+            removeItem(id) {
+                this.items = this.items.filter(item => item.id !== id);
+                this.save();
+                this.updateCartCount();
+            }
+
+            updateQuantity(id, quantity) {
+                const item = this.items.find(item => item.id === id);
+                if (item) {
+                    item.quantity = quantity;
+                    if (item.quantity <= 0) {
+                        this.removeItem(id);
+                    } else {
+                        this.save();
+                    }
+                }
+                this.updateCartCount();
+            }
+
+            getTotal() {
+                return this.items.reduce((total, item) => total + (item.price * item.quantity), 0);
+            }
+
+            save() {
+                localStorage.setItem('cart', JSON.stringify(this.items));
+            }
+
+            updateCartCount() {
+                const count = this.items.reduce((total, item) => total + item.quantity, 0);
+                document.getElementById('cart-count').textContent = count;
+                document.getElementById('mobile-cart-count').textContent = count;
+            }
+
+            showAddedToCart() {
+                const notification = document.createElement('div');
+                notification.className = 'fixed top-20 right-4 bg-green-500 text-white px-4 py-2 rounded-lg shadow-lg z-50';
+                notification.textContent = 'Item added to cart!';
+                document.body.appendChild(notification);
+                
+                setTimeout(() => {
+                    notification.remove();
+                }, 2000);
+            }
+        }
+
+        // Shop functionality
+        class Shop {
+            constructor() {
+                this.products = products;
+                this.filteredProducts = [...this.products];
+                this.cart = new Cart();
+                this.currentCategory = 'all';
+                this.currentPriceRange = 'all';
+                this.searchTerm = '';
+                
+                this.init();
+            }
+
+            init() {
+                this.renderProducts();
+                this.setupEventListeners();
+            }
+
+            setupEventListeners() {
+                // Search input
+                document.getElementById('search-input').addEventListener('input', (e) => {
+                    this.searchTerm = e.target.value.toLowerCase();
+                    this.applyFilters();
+                });
+
+                // Category filters
+                document.querySelectorAll('[data-filter]').forEach(button => {
+                    button.addEventListener('click', (e) => {
+                        this.currentCategory = e.target.dataset.filter;
+                        document.querySelectorAll('[data-filter]').forEach(btn => {
+                            btn.classList.remove('filter-active');
+                        });
+                        e.target.classList.add('filter-active');
+                        this.applyFilters();
+                    });
+                });
+
+                // Price filters
+                document.querySelectorAll('[data-price]').forEach(button => {
+                    button.addEventListener('click', (e) => {
+                        this.currentPriceRange = e.target.dataset.price;
+                        document.querySelectorAll('[data-price]').forEach(btn => {
+                            btn.classList.remove('filter-active');
+                        });
+                        e.target.classList.add('filter-active');
+                        this.applyFilters();
+                    });
+                });
+
+                // Mobile menu
+                document.getElementById('mobile-menu-button').addEventListener('click', () => {
+                    const menu = document.getElementById('mobile-menu');
+                    menu.classList.toggle('hidden');
+                });
+
+                // Set first filter buttons as active
+                document.querySelector('[data-filter="all"]').classList.add('filter-active');
+                document.querySelector('[data-price="all"]').classList.add('filter-active');
+            }
+
+            applyFilters() {
+                this.filteredProducts = this.products.filter(product => {
+                    // Category filter
+                    const categoryMatch = this.currentCategory === 'all' || product.category === this.currentCategory;
+                    
+                    // Price filter
+                    let priceMatch = true;
+                    if (this.currentPriceRange !== 'all') {
+                        if (this.currentPriceRange === '0-50') {
+                            priceMatch = product.price <= 50;
+                        } else if (this.currentPriceRange === '50-100') {
+                            priceMatch = product.price > 50 && product.price <= 100;
+                        } else if (this.currentPriceRange === '100+') {
+                            priceMatch = product.price > 100;
+                        }
+                    }
+                    
+                    // Search filter
+                    const searchMatch = product.name.toLowerCase().includes(this.searchTerm) || 
+                                      product.description.toLowerCase().includes(this.searchTerm);
+                    
+                    return categoryMatch && priceMatch && searchMatch;
+                });
+                
+                this.renderProducts();
+            }
+
+            renderProducts() {
+                const container = document.getElementById('products-grid');
+                
+                if (this.filteredProducts.length === 0) {
+                    container.innerHTML = `
+                        <div class="col-span-full text-center py-12">
+                            <i data-feather="search" class="text-gray-300 mx-auto mb-4" style="width: 64px; height: 64px;"></i>
+                            <h3 class="text-xl font-semibold text-gray-700 mb-2">No products found</h3>
+                            <p class="text-gray-500">Try adjusting your filters or search term</p>
+                        </div>
+                    `;
+                    feather.replace();
+                    return;
+                }
+                
+                container.innerHTML = this.filteredProducts.map(product => `
+                    <div class="product-card bg-white rounded-lg shadow-md overflow-hidden">
+                        <img src="${product.image}" alt="${product.name}" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <span class="inline-block px-2 py-1 text-xs font-semibold text-primary bg-blue-100 rounded-full mb-2 capitalize">
+                                ${product.category}
+                            </span>
+                            <h3 class="text-xl font-semibold text-gray-800 mb-2">${product.name}</h3>
+                            <p class="text-gray-600 mb-4">${product.description}</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-2xl font-bold text-primary">$${product.price.toFixed(2)}</span>
+                                <button class="add-to-cart bg-primary hover:bg-blue-600 text-white px-4 py-2 rounded-lg transition duration-300" 
+                                        data-product='${JSON.stringify(product)}'>
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+                
+                // Add event listeners to add-to-cart buttons
+                document.querySelectorAll('.add-to-cart').forEach(button => {
+                    button.addEventListener('click', (e) => {
+                        const product = JSON.parse(e.target.dataset.product);
+                        this.cart.addItem(product);
+                    });
+                });
+            }
+        }
+
+        // Initialize shop when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            new Shop();
+            feather.replace();
+        });
+    </script>
+</body>
+</html>

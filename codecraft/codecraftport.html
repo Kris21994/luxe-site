@@ -1,0 +1,238 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Portfolio - CodeCraft DevHub</title>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white/90 backdrop-blur-md z-50 shadow-sm transform transition-transform duration-300 -translate-y-full">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="codecraft.html" class="text-2xl font-bold gradient-text">CodeCraft</a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="codecraft.html" class="text-gray-500 hover:text-purple-600 px-3 py-2 text-sm font-medium">Home</a>
+                        <a href="index.html#services" class="text-gray-500 hover:text-purple-600 px-3 py-2 text-sm font-medium">Services</a>
+                        <a href="portfolio.html" class="text-gray-900 hover:text-purple-600 px-3 py-2 text-sm font-medium">Portfolio</a>
+                        <a href="index.html#about" class="text-gray-500 hover:text-purple-600 px-3 py-2 text-sm font-medium">About</a>
+                        <a href="index.html#contact" class="text-gray-500 hover:text-purple-600 px-3 py-2 text-sm font-medium">Contact</a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button class="text-gray-500 hover:text-purple-600">
+                        <i data-feather="menu"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- Back Button -->
+    <div class="bg-white pt-4">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <a href="codecraft.html" class="inline-flex items-center border-2 border-purple-600 text-purple-600 hover:bg-purple-600 hover:text-white px-4 py-2 rounded-full font-semibold transition duration-300">
+                <i data-feather="arrow-left" class="w-4 h-4 mr-2"></i>
+                Back to Home
+            </a>
+        </div>
+    </div>
+    <!-- Portfolio Header -->
+    <section class="pb-12 bg-white">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Our Portfolio</h1>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Explore our latest projects and see how we've helped businesses succeed</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Grid -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden portfolio-item group">
+                    <div class="relative overflow-hidden">
+                        <img src="http://static.photos/technology/640x360/1" alt="Tech Startup Website" class="w-full h-64 object-cover group-hover:scale-110 transition duration-300">
+                        <div class="portfolio-overlay absolute inset-0 bg-black bg-opacity-80 opacity-0 transform translate-y-4 transition-all duration-300 flex items-center justify-center p-6">
+                            <div class="text-center text-white">
+                                <h3 class="text-xl font-bold mb-2">Tech Startup Website</h3>
+                                <p class="text-sm mb-4">Modern responsive website built with React and Tailwind CSS</p>
+                                <span class="inline-block bg-purple-600 text-white px-3 py-1 rounded-full text-sm">Web Development</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Tech Startup Website</h3>
+                        <p class="text-gray-600 mb-4">Modern responsive website for a growing tech company with advanced features</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-purple-100 text-purple-600 px-2 py-1 rounded text-sm">React</span>
+                            <span class="bg-purple-100 text-purple-600 px-2 py-1 rounded text-sm">Tailwind CSS</span>
+                            <span class="bg-purple-100 text-purple-600 px-2 py-1 rounded text-sm">Node.js</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden portfolio-item group">
+                    <div class="relative overflow-hidden">
+                        <img src="http://static.photos/restaurant/640x360/2" alt="Restaurant Platform" class="w-full h-64 object-cover group-hover:scale-110 transition duration-300">
+                        <div class="portfolio-overlay absolute inset-0 bg-black bg-opacity-80 opacity-0 transform translate-y-4 transition-all duration-300 flex items-center justify-center p-6">
+                            <div class="text-center text-white">
+                                <h3 class="text-xl font-bold mb-2">Restaurant Platform</h3>
+                                <p class="text-sm mb-4">Complete ordering system with real-time reservations</p>
+                                <span class="inline-block bg-blue-600 text-white px-3 py-1 rounded-full text-sm">E-commerce</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Restaurant Platform</h3>
+                        <p class="text-gray-600 mb-4">Online ordering system with table reservation and payment integration</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-blue-100 text-blue-600 px-2 py-1 rounded text-sm">Vue.js</span>
+                            <span class="bg-blue-100 text-blue-600 px-2 py-1 rounded text-sm">Firebase</span>
+                            <span class="bg-blue-100 text-blue-600 px-2 py-1 rounded text-sm">Stripe</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden portfolio-item group">
+                    <div class="relative overflow-hidden">
+                        <img src="http://static.photos/finance/640x360/3" alt="Financial Dashboard" class="w-full h-64 object-cover group-hover:scale-110 transition duration-300">
+                        <div class="portfolio-overlay absolute inset-0 bg-black bg-opacity-80 opacity-0 transform translate-y-4 transition-all duration-300 flex items-center justify-center p-6">
+                            <div class="text-center text-white">
+                                <h3 class="text-xl font-bold mb-2">Financial Dashboard</h3>
+                                <p class="text-sm mb-4">Real-time analytics for financial data visualization</p>
+                                <span class="inline-block bg-green-600 text-white px-3 py-1 rounded-full text-sm">Data Analytics</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Financial Dashboard</h3>
+                        <p class="text-gray-600 mb-4">Real-time analytics dashboard with interactive charts and reports</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-green-100 text-green-600 px-2 py-1 rounded text-sm">Angular</span>
+                            <span class="bg-green-100 text-green-600 px-2 py-1 rounded text-sm">D3.js</span>
+                            <span class="bg-green-100 text-green-600 px-2 py-1 rounded text-sm">Python</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden portfolio-item group">
+                    <div class="relative overflow-hidden">
+                        <img src="http://static.photos/education/640x360/4" alt="Learning Platform" class="w-full h-64 object-cover group-hover:scale-110 transition duration-300">
+                        <div class="portfolio-overlay absolute inset-0 bg-black bg-opacity-80 opacity-0 transform translate-y-4 transition-all duration-300 flex items-center justify-center p-6">
+                            <div class="text-center text-white">
+                                <h3 class="text-xl font-bold mb-2">Learning Platform</h3>
+                                <p class="text-sm mb-4">Interactive online education platform with video streaming</p>
+                                <span class="inline-block bg-yellow-600 text-white px-3 py-1 rounded-full text-sm">Education</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Learning Platform</h3>
+                        <p class="text-gray-600 mb-4">Interactive online education platform with course management</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-yellow-100 text-yellow-600 px-2 py-1 rounded text-sm">React</span>
+                            <span class="bg-yellow-100 text-yellow-600 px-2 py-1 rounded text-sm">MongoDB</span>
+                            <span class="bg-yellow-100 text-yellow-600 px-2 py-1 rounded text-sm">AWS</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden portfolio-item group">
+                    <div class="relative overflow-hidden">
+                        <img src="http://static.photos/health/640x360/5" alt="Healthcare App" class="w-full h-64 object-cover group-hover:scale-110 transition duration-300">
+                        <div class="portfolio-overlay absolute inset-0 bg-black bg-opacity-80 opacity-0 transform translate-y-4 transition-all duration-300 flex items-center justify-center p-6">
+                            <div class="text-center text-white">
+                                <h3 class="text-xl font-bold mb-2">Healthcare App</h3>
+                                <p class="text-sm mb-4">Mobile app for patient management and telemedicine</p>
+                                <span class="inline-block bg-red-600 text-white px-3 py-1 rounded-full text-sm">Mobile</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Healthcare App</h3>
+                        <p class="text-gray-600 mb-4">Mobile application for healthcare providers and patients</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-red-100 text-red-600 px-2 py-1 rounded text-sm">React Native</span>
+                            <span class="bg-red-100 text-red-600 px-2 py-1 rounded text-sm">GraphQL</span>
+                            <span class="bg-red-100 text-red-600 px-2 py-1 rounded text-sm">MySQL</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 6 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden portfolio-item group">
+                    <div class="relative overflow-hidden">
+                        <img src="http://static.photos/retail/640x360/6" alt="E-commerce Store" class="w-full h-64 object-cover group-hover:scale-110 transition duration-300">
+                        <div class="portfolio-overlay absolute inset-0 bg-black bg-opacity-80 opacity-0 transform translate-y-4 transition-all duration-300 flex items-center justify-center p-6">
+                            <div class="text-center text-white">
+                                <h3 class="text-xl font-bold mb-2">E-commerce Store</h3>
+                                <p class="text-sm mb-4">Complete online shopping experience with inventory management</p>
+                                <span class="inline-block bg-indigo-600 text-white px-3 py-1 rounded-full text-sm">E-commerce</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">E-commerce Store</h3>
+                        <p class="text-gray-600 mb-4">Full-featured online store with payment processing</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-indigo-100 text-indigo-600 px-2 py-1 rounded text-sm">Next.js</span>
+                            <span class="bg-indigo-100 text-indigo-600 px-2 py-1 rounded text-sm">Shopify</span>
+                            <span class="bg-indigo-100 text-indigo-600 px-2 py-1 rounded text-sm">Stripe</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-16 bg-gradient-to-r from-purple-600 to-blue-600 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8 text-center">
+                <div>
+                    <div class="text-4xl font-bold mb-2">50+</div>
+                    <div class="text-purple-100">Projects Completed</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-bold mb-2">25+</div>
+                    <div class="text-purple-100">Happy Clients</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-bold mb-2">3+</div>
+                    <div class="text-purple-100">Years Experience</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-bold mb-2">15+</div>
+                    <div class="text-purple-100">Team Members</div>
+                </div>
+            </div>
+        </div>
+    </section>
